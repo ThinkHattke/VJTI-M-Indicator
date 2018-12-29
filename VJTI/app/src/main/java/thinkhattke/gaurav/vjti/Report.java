@@ -4,7 +4,6 @@ import android.app.Dialog;
 import android.content.Intent;
 import android.database.Cursor;
 import android.graphics.Bitmap;
-import android.graphics.BitmapFactory;
 import android.net.Uri;
 import android.provider.MediaStore;
 import android.support.annotation.NonNull;
@@ -37,6 +36,7 @@ import thinkhattke.gaurav.vjti.API.Connection.APIClient;
 import thinkhattke.gaurav.vjti.API.Connection.ApiInterface;
 import thinkhattke.gaurav.vjti.API.Reponse.NewReportRes;
 import thinkhattke.gaurav.vjti.API.Request.AddReportReq;
+import thinkhattke.gaurav.vjti.Util.GPSTracker;
 
 public class Report extends AppCompatActivity {
 
