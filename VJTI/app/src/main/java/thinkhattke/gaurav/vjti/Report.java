@@ -107,8 +107,7 @@ public class Report extends AppCompatActivity {
 
         //Extracting GPS data
         gps = new GPSTracker(Report.this);
-        Lat = gps.slatitude;
-        Lon = gps.slongitude;
+        getCoordinates();
 
 
         //Setting up API
@@ -331,6 +330,21 @@ public class Report extends AppCompatActivity {
                 image.setTag("yes");
             }
         }
+    }
+
+
+    //Function to fetch GPS location
+    private void getCoordinates() {
+
+        if (gps.canGetLocation()) {
+
+            Double dlatitude = gps.getLatitude();
+            Double dlongitude = gps.getLongitude();
+            Lat = String.valueOf(dlatitude);
+            Lon = String.valueOf(dlongitude);
+
+        }
+
     }
 
 
