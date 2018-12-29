@@ -1,9 +1,715 @@
 <?xml version="1.0" encoding="utf-8"?>
-<android.support.constraint.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<android.support.design.widget.CoordinatorLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
+    android:background="@color/darkGrey"
     android:layout_height="match_parent"
     tools:context=".MainActivity">
 
-</android.support.constraint.ConstraintLayout>
+
+    <android.support.design.widget.AppBarLayout
+        android:id="@+id/collapsing_toolbar"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@android:color/white"
+        app:expandedTitleMarginEnd="64dp"
+        app:elevation="0dp"
+        app:expandedTitleMarginStart="48dp"
+        app:layout_scrollFlags="scroll|exitUntilCollapsed">
+
+        <TextView
+            android:minHeight="?attr/actionBarSize"
+            app:layout_scrollFlags="scroll|enterAlways"
+            android:textStyle="bold"
+            android:textSize="11sp"
+            android:textColor="@color/white"
+            android:gravity="center_vertical"
+            android:background="@color/colorPrimaryDark"
+            android:paddingStart="15dp"
+            android:layout_width="match_parent"
+            android:layout_height="20dp"
+            android:text="test indicator"/>
+
+
+        <RelativeLayout
+            android:background="@color/colorPrimary"
+            android:layout_width="match_parent"
+            android:layout_height="55dp"
+            android:orientation="horizontal">
+
+
+            <ImageView
+                android:layout_width="55dp"
+                android:layout_height="55dp"
+                android:padding="15dp"
+                android:layout_alignParentStart="true"
+                android:src="@drawable/icon_menu"/>
+
+            <TextView
+                android:textStyle="bold"
+                android:layout_width="wrap_content"
+                android:layout_marginStart="55dp"
+                android:text="Mumbai"
+                android:textColor="@color/white"
+                android:textSize="20sp"
+                android:gravity="center"
+                android:layout_height="match_parent" />
+
+
+        </RelativeLayout>
+
+    </android.support.design.widget.AppBarLayout>
+
+
+    <ScrollView
+        app:layout_behavior="@string/appbar_scrolling_view_behavior"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+
+        <LinearLayout
+            android:orientation="vertical"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
+
+
+            <LinearLayout
+            android:layout_margin="10dp"
+            android:orientation="vertical"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
+
+
+
+            <LinearLayout
+                android:orientation="vertical"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content">
+
+
+                <LinearLayout
+                    android:orientation="horizontal"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:weightSum="4">
+
+
+                    <LinearLayout
+                        android:paddingTop="5dp"
+                        android:paddingBottom="5dp"
+                        android:background="@color/lightGrey"
+                        android:layout_margin="2dp"
+                        android:layout_width="wrap_content"
+                        android:layout_height="115dp"
+                        android:layout_weight="1"
+                        android:orientation="vertical">
+
+                        <ImageView
+                            android:layout_gravity="center"
+                            android:layout_width="80dp"
+                            android:layout_height="80dp"
+                            android:src="@drawable/icon_local_train"/>
+
+
+                        <TextView
+                            android:layout_marginBottom="5dp"
+                            android:layout_width="match_parent"
+                            android:layout_height="match_parent"
+                            android:text="Local"
+                            android:gravity="center"
+                            android:textColor="@color/white"/>
+
+                    </LinearLayout>
+
+                    <LinearLayout
+                        android:paddingTop="5dp"
+                        android:paddingBottom="5dp"
+                        android:background="@color/lightGrey"
+                        android:layout_margin="2dp"
+                        android:layout_width="wrap_content"
+                        android:layout_height="115dp"
+                        android:layout_weight="1"
+                        android:orientation="vertical">
+
+                        <ImageView
+                            android:layout_gravity="center"
+                            android:layout_width="80dp"
+                            android:layout_height="80dp"
+                            android:src="@drawable/icon_bus"/>
+
+
+                        <TextView
+                            android:layout_width="match_parent"
+                            android:layout_height="match_parent"
+                            android:text="Bus"
+                            android:gravity="center"
+                            android:layout_marginBottom="5dp"
+                            android:textColor="@color/white"/>
+
+                    </LinearLayout>
+
+                    <LinearLayout
+                        android:paddingTop="5dp"
+                        android:paddingBottom="5dp"
+                        android:background="@color/lightGrey"
+                        android:layout_margin="2dp"
+                        android:layout_width="wrap_content"
+                        android:layout_height="115dp"
+                        android:layout_weight="1"
+                        android:orientation="vertical">
+
+                        <ImageView
+                            android:layout_gravity="center"
+                            android:layout_width="80dp"
+                            android:layout_height="80dp"
+                            android:src="@drawable/icon_express_train"/>
+
+
+                        <TextView
+                            android:layout_width="match_parent"
+                            android:layout_height="match_parent"
+                            android:text="Express"
+                            android:layout_marginBottom="5dp"
+                            android:gravity="center"
+                            android:textColor="@color/white"/>
+
+                    </LinearLayout>
+
+                    <LinearLayout
+                        android:paddingTop="5dp"
+                        android:paddingBottom="5dp"
+                        android:background="@color/lightGrey"
+                        android:layout_margin="2dp"
+                        android:layout_width="wrap_content"
+                        android:layout_height="115dp"
+                        android:layout_weight="1"
+                        android:orientation="vertical">
+
+                        <ImageView
+                            android:layout_gravity="center"
+                            android:layout_width="80dp"
+                            android:layout_height="80dp"
+                            android:src="@drawable/icon_msrtc"/>
+
+
+                        <TextView
+                            android:layout_marginBottom="5dp"
+                            android:layout_width="match_parent"
+                            android:layout_height="match_parent"
+                            android:text="MSRTC"
+                            android:gravity="center"
+                            android:textColor="@color/white"/>
+
+                    </LinearLayout>
+
+
+                </LinearLayout>
+
+
+            </LinearLayout>
+
+
+            <LinearLayout
+                android:orientation="vertical"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content">
+
+
+                <LinearLayout
+                    android:orientation="horizontal"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:weightSum="4">
+
+
+                    <LinearLayout
+                        android:paddingTop="5dp"
+                        android:paddingBottom="5dp"
+                        android:background="@color/lightGrey"
+                        android:layout_margin="2dp"
+                        android:layout_width="wrap_content"
+                        android:layout_height="115dp"
+                        android:layout_weight="1"
+                        android:orientation="vertical">
+
+                        <ImageView
+                            android:layout_gravity="center"
+                            android:background="@color/lightGrey"
+                            android:layout_width="80dp"
+                            android:layout_height="80dp"
+                            android:src="@drawable/icon_chat"/>
+
+
+                        <TextView
+                            android:layout_marginBottom="5dp"
+                            android:layout_width="match_parent"
+                            android:layout_height="match_parent"
+                            android:text="Train Chat"
+                            android:gravity="center"
+                            android:textColor="@color/white"/>
+
+                    </LinearLayout>
+
+                    <LinearLayout
+                        android:paddingTop="5dp"
+                        android:paddingBottom="5dp"
+                        android:background="@color/lightGrey"
+                        android:layout_margin="2dp"
+                        android:layout_width="wrap_content"
+                        android:layout_height="115dp"
+                        android:layout_weight="1"
+                        android:orientation="vertical">
+
+                        <ImageView
+                            android:layout_gravity="center"
+                            android:background="@color/lightGrey"
+                            android:layout_width="80dp"
+                            android:layout_height="80dp"
+                            android:src="@drawable/icon_mono"/>
+
+
+                        <TextView
+                            android:layout_width="match_parent"
+                            android:layout_height="match_parent"
+                            android:text="Mono"
+                            android:gravity="center"
+                            android:layout_marginBottom="5dp"
+                            android:textColor="@color/white"/>
+
+                    </LinearLayout>
+
+                    <LinearLayout
+                        android:paddingTop="5dp"
+                        android:paddingBottom="5dp"
+                        android:background="@color/lightGrey"
+                        android:layout_margin="2dp"
+                        android:layout_width="wrap_content"
+                        android:layout_height="115dp"
+                        android:layout_weight="1"
+                        android:orientation="vertical">
+
+                        <ImageView
+                            android:layout_gravity="center"
+                            android:background="@color/lightGrey"
+                            android:layout_width="80dp"
+                            android:layout_height="80dp"
+                            android:src="@drawable/icon_metro"/>
+
+
+                        <TextView
+                            android:layout_width="match_parent"
+                            android:layout_height="match_parent"
+                            android:text="Metro"
+                            android:layout_marginBottom="5dp"
+                            android:gravity="center"
+                            android:textColor="@color/white"/>
+
+                    </LinearLayout>
+
+                    <LinearLayout
+                        android:paddingTop="5dp"
+                        android:paddingBottom="5dp"
+                        android:background="@color/lightGrey"
+                        android:layout_margin="2dp"
+                        android:layout_width="wrap_content"
+                        android:layout_height="115dp"
+                        android:layout_weight="1"
+                        android:orientation="vertical">
+
+                        <ImageView
+                            android:layout_gravity="center"
+                            android:background="@color/lightGrey"
+                            android:layout_width="80dp"
+                            android:layout_height="80dp"
+                            android:src="@drawable/icon_auto"/>
+
+
+                        <TextView
+                            android:layout_marginBottom="5dp"
+                            android:layout_width="match_parent"
+                            android:layout_height="match_parent"
+                            android:text="Auto"
+                            android:gravity="center"
+                            android:textColor="@color/white"/>
+
+                    </LinearLayout>
+
+
+                </LinearLayout>
+
+
+            </LinearLayout>
+
+
+            <LinearLayout
+                android:orientation="vertical"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content">
+
+
+                <LinearLayout
+                    android:orientation="horizontal"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:weightSum="4">
+
+
+                    <LinearLayout
+                        android:paddingTop="5dp"
+                        android:paddingBottom="5dp"
+                        android:background="@color/lightGrey"
+                        android:layout_margin="2dp"
+                        android:layout_width="wrap_content"
+                        android:layout_height="115dp"
+                        android:layout_weight="1"
+                        android:orientation="vertical">
+
+                        <ImageView
+                            android:layout_gravity="center"
+                            android:background="@color/lightGrey"
+                            android:layout_width="80dp"
+                            android:layout_height="80dp"
+                            android:src="@drawable/icon_cab"/>
+
+
+                        <TextView
+                            android:layout_marginBottom="5dp"
+                            android:layout_width="match_parent"
+                            android:layout_height="match_parent"
+                            android:text="Cab"
+                            android:gravity="center"
+                            android:textColor="@color/white"/>
+
+                    </LinearLayout>
+
+                    <LinearLayout
+                        android:paddingTop="5dp"
+                        android:paddingBottom="5dp"
+                        android:background="@color/lightGrey"
+                        android:layout_margin="2dp"
+                        android:layout_width="wrap_content"
+                        android:layout_height="115dp"
+                        android:layout_weight="1"
+                        android:orientation="vertical">
+
+                        <ImageView
+                            android:layout_gravity="center"
+                            android:background="@color/lightGrey"
+                            android:layout_width="80dp"
+                            android:layout_height="80dp"
+                            android:src="@drawable/icon_ferry"/>
+
+
+                        <TextView
+                            android:text="Ferry"
+                            android:layout_width="match_parent"
+                            android:layout_height="match_parent"
+                            android:gravity="center"
+                            android:layout_marginBottom="5dp"
+                            android:textColor="@color/white"/>
+
+                    </LinearLayout>
+
+                    <LinearLayout
+                        android:paddingTop="5dp"
+                        android:paddingBottom="5dp"
+                        android:background="@color/lightGrey"
+                        android:layout_margin="2dp"
+                        android:layout_width="wrap_content"
+                        android:layout_height="115dp"
+                        android:layout_weight="1"
+                        android:orientation="vertical">
+
+                        <ImageView
+                            android:layout_gravity="center"
+                            android:background="@color/lightGrey"
+                            android:layout_width="80dp"
+                            android:layout_height="80dp"
+                            android:src="@drawable/icon_jobs"/>
+
+
+                        <TextView
+                            android:layout_width="match_parent"
+                            android:layout_height="match_parent"
+                            android:text="Jobs"
+                            android:layout_marginBottom="5dp"
+                            android:gravity="center"
+                            android:textColor="@color/white"/>
+
+                    </LinearLayout>
+
+                    <LinearLayout
+                        android:paddingTop="5dp"
+                        android:paddingBottom="5dp"
+                        android:background="@color/lightGrey"
+                        android:layout_margin="2dp"
+                        android:layout_width="wrap_content"
+                        android:layout_height="115dp"
+                        android:layout_weight="1"
+                        android:orientation="vertical">
+
+                        <ImageView
+                            android:layout_gravity="center"
+                            android:background="@color/lightGrey"
+                            android:layout_width="80dp"
+                            android:layout_height="80dp"
+                            android:src="@drawable/icon_map"/>
+
+
+                        <TextView
+                            android:layout_marginBottom="5dp"
+                            android:layout_width="match_parent"
+                            android:layout_height="match_parent"
+                            android:text="Map"
+                            android:gravity="center"
+                            android:textColor="@color/white"/>
+
+                    </LinearLayout>
+
+
+                </LinearLayout>
+
+
+            </LinearLayout>
+
+
+        </LinearLayout>
+
+
+            <LinearLayout
+                android:orientation="vertical"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content">
+
+
+                <TextView
+                    android:layout_marginBottom="10dp"
+                    android:text="OTHERS"
+                    android:textColor="@color/white"
+                    android:layout_marginStart="15dp"
+                    android:gravity="bottom"
+                    android:layout_width="match_parent"
+                    android:layout_height="40dp" />
+
+
+                <RelativeLayout
+                    android:background="@color/white"
+                    android:layout_width="match_parent"
+                    android:layout_height="50dp">
+
+
+                    <ImageView
+                        android:src="@drawable/icon_pass"
+                        android:padding="10dp"
+                        android:layout_marginStart="15dp"
+                        android:layout_width="50dp"
+                        android:layout_height="50dp" />
+
+
+                    <TextView
+                        android:paddingStart="20dp"
+                        android:layout_marginStart="65dp"
+                        android:text="Manage Your Pass"
+                        android:textSize="18sp"
+                        android:gravity="center_vertical"
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent" />
+
+
+                </RelativeLayout>
+
+
+                <RelativeLayout
+                    android:background="@color/grey"
+                    android:layout_width="match_parent"
+                    android:layout_height="50dp">
+
+
+                    <ImageView
+                        android:src="@drawable/icon_stop"
+                        android:padding="10dp"
+                        android:layout_marginStart="15dp"
+                        android:layout_width="50dp"
+                        android:layout_height="50dp" />
+
+
+                    <TextView
+                        android:paddingStart="20dp"
+                        android:layout_marginStart="65dp"
+                        android:text="Penalty - Traffic and Railway"
+                        android:textSize="18sp"
+                        android:gravity="center_vertical"
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent" />
+
+
+                </RelativeLayout>
+
+
+                <RelativeLayout
+                    android:background="@color/white"
+                    android:layout_width="match_parent"
+                    android:layout_height="50dp">
+
+
+                    <ImageView
+                        android:src="@drawable/icon_globe"
+                        android:padding="10dp"
+                        android:layout_marginStart="15dp"
+                        android:layout_width="50dp"
+                        android:layout_height="50dp" />
+
+
+                    <TextView
+                        android:paddingStart="20dp"
+                        android:layout_marginStart="65dp"
+                        android:text="Mumbai Map"
+                        android:textSize="18sp"
+                        android:gravity="center_vertical"
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent" />
+
+
+                </RelativeLayout>
+
+
+            </LinearLayout>
+
+
+            <LinearLayout
+                android:layout_marginBottom="40dp"
+                android:orientation="vertical"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content">
+
+
+                <TextView
+                    android:layout_marginBottom="10dp"
+                    android:text="SAFETY"
+                    android:textColor="@color/white"
+                    android:layout_marginStart="15dp"
+                    android:gravity="bottom"
+                    android:layout_width="match_parent"
+                    android:layout_height="40dp" />
+
+
+                <RelativeLayout
+                    android:background="@color/white"
+                    android:layout_width="match_parent"
+                    android:layout_height="50dp">
+
+
+                    <ImageView
+                        android:src="@drawable/icon_report"
+                        android:padding="10dp"
+                        android:layout_marginStart="15dp"
+                        android:layout_width="50dp"
+                        android:layout_height="50dp" />
+
+
+                    <TextView
+                        android:paddingStart="20dp"
+                        android:layout_marginStart="65dp"
+                        android:text="Report Crime / Problem"
+                        android:textSize="18sp"
+                        android:gravity="center_vertical"
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent" />
+
+
+                </RelativeLayout>
+
+
+                <RelativeLayout
+                    android:background="@color/grey"
+                    android:layout_width="match_parent"
+                    android:layout_height="50dp">
+
+
+                    <ImageView
+                        android:src="@drawable/icon_telephone"
+                        android:padding="10dp"
+                        android:layout_marginStart="15dp"
+                        android:tint="@color/colorPrimary"
+                        android:layout_width="50dp"
+                        android:layout_height="50dp" />
+
+
+                    <TextView
+                        android:paddingStart="20dp"
+                        android:layout_marginStart="65dp"
+                        android:text="Emergency Contacts"
+                        android:textSize="18sp"
+                        android:gravity="center_vertical"
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent" />
+
+
+                </RelativeLayout>
+
+
+                <RelativeLayout
+                    android:background="@color/white"
+                    android:layout_width="match_parent"
+                    android:layout_height="50dp">
+
+
+                    <ImageView
+                        android:src="@drawable/icon_women"
+                        android:padding="10dp"
+                        android:layout_marginStart="15dp"
+                        android:layout_width="50dp"
+                        android:layout_height="50dp" />
+
+
+                    <TextView
+                        android:paddingStart="20dp"
+                        android:layout_marginStart="65dp"
+                        android:text="Women Safety"
+                        android:textSize="18sp"
+                        android:gravity="center_vertical"
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent" />
+
+
+                </RelativeLayout>
+
+
+                <RelativeLayout
+                    android:background="@color/grey"
+                    android:layout_width="match_parent"
+                    android:layout_height="50dp">
+
+
+                    <ImageView
+                        android:src="@drawable/icon_police"
+                        android:padding="10dp"
+                        android:layout_marginStart="15dp"
+                        android:layout_width="50dp"
+                        android:layout_height="50dp" />
+
+
+                    <TextView
+                        android:paddingStart="20dp"
+                        android:layout_marginStart="65dp"
+                        android:text="Police Station Locator"
+                        android:textSize="18sp"
+                        android:gravity="center_vertical"
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent" />
+
+
+                </RelativeLayout>
+
+
+            </LinearLayout>
+
+
+        </LinearLayout>
+
+
+    </ScrollView>
+
+
+</android.support.design.widget.CoordinatorLayout>
