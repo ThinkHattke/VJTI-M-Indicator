@@ -494,6 +494,7 @@
 
 
                 <RelativeLayout
+                    android:id="@+id/manage"
                     android:background="@color/white"
                     android:layout_width="match_parent"
                     android:layout_height="50dp">
@@ -595,6 +596,7 @@
 
 
                 <RelativeLayout
+                    android:id="@+id/report"
                     android:background="@color/white"
                     android:layout_width="match_parent"
                     android:layout_height="50dp">

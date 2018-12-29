@@ -1,0 +1,242 @@
+<?xml version="1.0" encoding="utf-8"?>
+<android.support.design.widget.CoordinatorLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".Report">
+
+
+    <android.support.design.widget.AppBarLayout
+        android:id="@+id/collapsing_toolbar"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@android:color/white"
+        app:expandedTitleMarginEnd="64dp"
+        app:elevation="0dp"
+        app:expandedTitleMarginStart="48dp"
+        app:layout_scrollFlags="scroll|exitUntilCollapsed">
+
+        <TextView
+            android:minHeight="?attr/actionBarSize"
+            app:layout_scrollFlags="scroll|enterAlways"
+            android:textStyle="bold"
+            android:textSize="11sp"
+            android:textColor="@color/white"
+            android:gravity="center_vertical"
+            android:background="@color/colorPrimaryDark"
+            android:paddingStart="15dp"
+            android:layout_width="match_parent"
+            android:layout_height="20dp"
+            android:text="test indicator"/>
+
+
+        <RelativeLayout
+            android:background="@color/colorPrimary"
+            android:layout_width="match_parent"
+            android:layout_height="55dp"
+            android:orientation="horizontal">
+
+
+            <ImageView
+                android:id="@+id/back"
+                android:layout_width="55dp"
+                android:layout_height="55dp"
+                android:padding="15dp"
+                android:layout_alignParentStart="true"
+                android:src="@drawable/icon_back_button"/>
+
+            <TextView
+                android:textStyle="bold"
+                android:layout_width="wrap_content"
+                android:layout_marginStart="55dp"
+                android:text="Report Crime / Problem"
+                android:textColor="@color/white"
+                android:textSize="20sp"
+                android:gravity="center"
+                android:layout_height="match_parent" />
+
+
+        </RelativeLayout>
+
+    </android.support.design.widget.AppBarLayout>
+
+
+    <ScrollView
+        app:layout_behavior="@string/appbar_scrolling_view_behavior"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+
+        <LinearLayout
+            android:layout_marginBottom="40dp"
+            android:orientation="vertical"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
+
+
+            <RelativeLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content">
+
+
+                <TextView
+                    android:id="@+id/how"
+                    android:textSize="15sp"
+                    android:layout_alignParentEnd="true"
+                    android:layout_marginTop="5dp"
+                    android:layout_marginEnd="15dp"
+                    android:text="How it works?"
+                    android:textStyle="italic"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content" />
+
+
+            </RelativeLayout>
+
+
+            <TextView
+                android:layout_marginTop="5dp"
+                android:layout_marginStart="15dp"
+                android:textSize="20sp"
+                android:textColor="@android:color/black"
+                android:text="Name:"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content" />
+
+
+            <EditText
+                android:id="@+id/name"
+                android:backgroundTint="@color/lightGrey"
+                android:layout_marginEnd="10dp"
+                android:maxLines="1"
+                android:maxLength="50"
+                android:layout_marginTop="15dp"
+                android:layout_marginStart="15dp"
+                android:textSize="20sp"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content" />
+
+
+            <TextView
+                android:layout_marginTop="15dp"
+                android:layout_marginStart="15dp"
+                android:textSize="20sp"
+                android:textColor="@android:color/black"
+                android:text="Enter Your Phone Number:"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content" />
+
+
+            <EditText
+                android:id="@+id/number"
+                android:backgroundTint="@color/lightGrey"
+                android:inputType="phone"
+                android:layout_marginEnd="15dp"
+                android:maxLines="1"
+                android:maxLength="10"
+                android:layout_marginTop="5dp"
+                android:layout_marginStart="15dp"
+                android:textSize="20sp"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content" />
+
+
+            <TextView
+                android:layout_marginTop="15dp"
+                android:layout_marginStart="15dp"
+                android:textSize="20sp"
+                android:textColor="@android:color/black"
+                android:text="Crime / Problem:"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content" />
+
+
+            <Spinner
+                android:id="@+id/problem"
+                android:background="@drawable/button_round_grey"
+                android:inputType="phone"
+                android:layout_marginEnd="15dp"
+                android:maxLines="1"
+                android:maxLength="10"
+                android:layout_marginTop="5dp"
+                android:layout_marginStart="15dp"
+                android:textSize="20sp"
+                android:layout_width="match_parent"
+                android:layout_height="50dp" />
+
+
+            <TextView
+                android:layout_marginTop="15dp"
+                android:layout_marginStart="15dp"
+                android:textSize="20sp"
+                android:textColor="@android:color/black"
+                android:text="Location:"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content" />
+
+
+            <AutoCompleteTextView
+                android:id="@+id/location"
+                android:backgroundTint="@color/lightGrey"
+                android:layout_marginEnd="15dp"
+                android:maxLines="1"
+                android:maxLength="10"
+                android:layout_marginTop="5dp"
+                android:layout_marginStart="15dp"
+                android:textSize="20sp"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content" />
+
+
+            <TextView
+                android:layout_marginTop="15dp"
+                android:layout_marginStart="15dp"
+                android:textSize="20sp"
+                android:textColor="@android:color/black"
+                android:text="Image (If any):"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content" />
+
+
+            <ImageView
+                android:tag="no"
+                android:id="@+id/image"
+                android:src="@drawable/icon_image_add"
+                android:layout_marginStart="55dp"
+                android:layout_marginEnd="55dp"
+                android:layout_marginTop="15dp"
+                android:layout_marginBottom="15dp"
+                android:layout_width="match_parent"
+                android:layout_height="100dp" />
+
+
+            <br.com.simplepass.loading_button_lib.customViews.CircularProgressButton
+                android:id="@+id/submit"
+                android:elevation="10dp"
+                android:text="Submit"
+                android:layout_gravity="center"
+                android:gravity="center"
+                android:textSize="16sp"
+                android:textStyle="bold"
+                android:layout_marginBottom="40dp"
+                android:textColor="@color/white"
+                android:foreground="?android:attr/selectableItemBackgroundBorderless"
+                android:layout_marginTop="30dp"
+                android:layout_width="match_parent"
+                android:layout_height="50dp"
+                android:layout_marginStart="25dp"
+                android:layout_marginEnd="25dp"
+                android:background="@color/colorPrimary"
+                app:spinning_bar_width="4dp"
+                app:spinning_bar_color="#FFF"
+                app:spinning_bar_padding="6dp" />
+
+
+        </LinearLayout>
+
+
+    </ScrollView>
+
+
+</android.support.design.widget.CoordinatorLayout>

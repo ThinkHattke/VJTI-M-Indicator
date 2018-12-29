@@ -1,0 +1,42 @@
+{
+  "project_info": {
+    "project_number": "930473371402",
+    "firebase_url": "https://test-indicator.firebaseio.com",
+    "project_id": "test-indicator",
+    "storage_bucket": "test-indicator.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:930473371402:android:493452e4aee33ee6",
+        "android_client_info": {
+          "package_name": "thinkhattke.gaurav.vjti"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "930473371402-4svj87j18g1g1k2f4c9ig7junlps4i6h.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyBzOx2L-DDdfwkX_YokPLKAdwolXBEZyv8"
+        }
+      ],
+      "services": {
+        "analytics_service": {
+          "status": 1
+        },
+        "appinvite_service": {
+          "status": 1,
+          "other_platform_oauth_client": []
+        },
+        "ads_service": {
+          "status": 2
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

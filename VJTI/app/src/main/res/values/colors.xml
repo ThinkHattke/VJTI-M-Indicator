@@ -2,7 +2,7 @@
 <resources>
     <color name="colorPrimary">#C50010</color>
     <color name="colorPrimaryDark">#920011</color>
-    <color name="colorAccent">#ffffff</color>
+    <color name="colorAccent">#C50010</color>
     <color name="voilet">#7D43EE</color>
     <color name="buttonStart">#fa454b</color>
     <color name="buttonEnd">#fc8f58</color>
