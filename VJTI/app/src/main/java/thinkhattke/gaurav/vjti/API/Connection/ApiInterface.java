@@ -5,15 +5,29 @@ import com.google.gson.annotations.SerializedName;
 import retrofit2.Call;
 import retrofit2.http.Body;
 import retrofit2.http.POST;
+import thinkhattke.gaurav.vjti.API.Reponse.NewPassRes;
 import thinkhattke.gaurav.vjti.API.Reponse.NewReportRes;
+import thinkhattke.gaurav.vjti.API.Request.AddPassReq;
 import thinkhattke.gaurav.vjti.API.Request.AddReportReq;
 
 public interface ApiInterface {
 
 
+
     //Report Module
     @POST("api/problem")
     Call<NewReportRes> attemptReport(@Body AddReportReq params);
+
+
+
+    //Pass Module
+    @POST("api/pass")
+    Call<NewPassRes> attemptPass(@Body AddPassReq params);
+
+
+
+
+
 
 
 }

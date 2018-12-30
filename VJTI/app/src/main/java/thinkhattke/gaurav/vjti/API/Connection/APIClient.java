@@ -10,7 +10,7 @@ import retrofit2.converter.gson.GsonConverterFactory;
 public class APIClient {
 
 
-    private static final String BASE_URL = "http:test-indicator.herokuapp.com/";
+    private static final String BASE_URL = "http://192.168.1.103:9966/";
 
     private static Retrofit retrofit = null;
 

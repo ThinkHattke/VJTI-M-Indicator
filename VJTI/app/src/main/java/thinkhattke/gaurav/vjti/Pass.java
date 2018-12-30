@@ -16,13 +16,9 @@ import android.view.View;
 import android.view.Window;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
-import android.widget.AutoCompleteTextView;
-import android.widget.Button;
 import android.widget.CheckBox;
-import android.widget.CompoundButton;
 import android.widget.DatePicker;
 import android.widget.ImageView;
-import android.widget.LinearLayout;
 import android.widget.Spinner;
 import android.widget.TextView;
 import android.widget.Toast;
@@ -30,9 +26,16 @@ import android.widget.Toast;
 import java.util.Objects;
 
 import br.com.simplepass.loading_button_lib.customViews.CircularProgressButton;
+import retrofit2.Call;
+import retrofit2.Callback;
+import retrofit2.Response;
+import thinkhattke.gaurav.vjti.API.Connection.APIClient;
+import thinkhattke.gaurav.vjti.API.Connection.ApiInterface;
+import thinkhattke.gaurav.vjti.API.Reponse.NewPassRes;
+import thinkhattke.gaurav.vjti.API.Request.AddPassReq;
 import thinkhattke.gaurav.vjti.Util.TinyDB;
 
-public class Remainder extends AppCompatActivity {
+public class Pass extends AppCompatActivity {
 
 
     //UI Components
@@ -44,6 +47,7 @@ public class Remainder extends AppCompatActivity {
 
     //Global Data
     TinyDB db;
+    private ApiInterface api;
 
 
     //Local Data
@@ -76,7 +80,11 @@ public class Remainder extends AppCompatActivity {
 
 
         //Initialising TinyDB
-        db = new TinyDB(Remainder.this);
+        db = new TinyDB(Pass.this);
+
+
+        //Setting up API
+        api = APIClient.getClient().create(ApiInterface.class);
 
 
         //checking for previously saved data
@@ -117,7 +125,7 @@ public class Remainder extends AppCompatActivity {
 
 
         //Setting Spinners
-        ArrayAdapter<String> minorAdapter = new ArrayAdapter<String>(Remainder.this, android.R.layout.simple_spinner_item, places);
+        ArrayAdapter<String> minorAdapter = new ArrayAdapter<String>(Pass.this, android.R.layout.simple_spinner_item, places);
         minorAdapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
 
         start.setAdapter(minorAdapter);
@@ -158,7 +166,7 @@ public class Remainder extends AppCompatActivity {
     private void showDialog() {
 
         final Dialog dialog;
-        dialog = new Dialog(Remainder.this);
+        dialog = new Dialog(Pass.this);
         dialog.getWindow().setBackgroundDrawableResource(android.R.color.transparent);
         dialog.requestWindowFeature(Window.FEATURE_NO_TITLE);
         dialog.setContentView(R.layout.dialog_terms_and_condition);
@@ -202,6 +210,8 @@ public class Remainder extends AppCompatActivity {
                     done.setVisibility(View.GONE);
                     edit.setVisibility(View.VISIBLE);
                     submit.setVisibility(View.GONE);
+
+                    postData();
 
                     dialog.dismiss();
 
@@ -284,7 +294,7 @@ public class Remainder extends AppCompatActivity {
 
 
                 final Dialog dialog;
-                dialog = new Dialog(Remainder.this);
+                dialog = new Dialog(Pass.this);
                 dialog.getWindow().setBackgroundDrawableResource(android.R.color.transparent);
                 dialog.requestWindowFeature(Window.FEATURE_NO_TITLE);
                 dialog.setContentView(R.layout.dialog_trains);
@@ -444,7 +454,7 @@ public class Remainder extends AppCompatActivity {
 
 
                 final Dialog dialog;
-                dialog = new Dialog(Remainder.this);
+                dialog = new Dialog(Pass.this);
                 dialog.getWindow().setBackgroundDrawableResource(android.R.color.transparent);
                 dialog.requestWindowFeature(Window.FEATURE_NO_TITLE);
                 dialog.setContentView(R.layout.dialog_trains);
@@ -638,9 +648,9 @@ public class Remainder extends AppCompatActivity {
         view.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                LayoutInflater inflater = LayoutInflater.from(Remainder.this);
+                LayoutInflater inflater = LayoutInflater.from(Pass.this);
                 final View pickDate = inflater.inflate(R.layout.layout_date_pick, null);
-                new AlertDialog.Builder(Objects.requireNonNull(Remainder.this))
+                new AlertDialog.Builder(Objects.requireNonNull(Pass.this))
                         .setView(pickDate)
                         .setIcon(android.R.drawable.ic_menu_agenda)
                         .setNegativeButton(android.R.string.cancel, null)
@@ -764,6 +774,7 @@ public class Remainder extends AppCompatActivity {
     }
 
 
+    //Setting Spinner Value
     private void setValue(String s, Spinner spinner) {
 
         for(int i=0; i<places.length; i++) {
@@ -777,6 +788,36 @@ public class Remainder extends AppCompatActivity {
         }
 
     }
+
+
+    private void postData() {
+
+        AddPassReq addPassReq = new AddPassReq("abcde",StartDate, EndDate,Start, End, StartTrain, EndTrain);
+
+        api.attemptPass(addPassReq).enqueue(new Callback<NewPassRes>() {
+            @Override
+            public void onResponse(Call<NewPassRes> call, Response<NewPassRes> response) {
+
+
+                if (response.body().getStatus().equals("Done")) {
+
+                    db.putString("passID", response.body().getId());
+
+                }
+
+
+            }
+
+            @Override
+            public void onFailure(Call<NewPassRes> call, Throwable t) {
+
+            }
+        });
+
+    }
+
+
+
 
 
 }

@@ -19,6 +19,7 @@
                 <action android:name="com.google.firebase.MESSAGING_EVENT" />
             </intent-filter>
         </service>
+
         <activity android:name=".Login" />
         <activity android:name=".MainActivity">
             <intent-filter>
@@ -28,7 +29,8 @@
             </intent-filter>
         </activity>
         <activity android:name=".Report" />
-        <activity android:name=".Remainder"></activity>
+        <activity android:name=".Pass" />
+        <activity android:name=".Train"></activity>
     </application>
 
 </manifest>

@@ -4,7 +4,6 @@ import com.google.gson.annotations.SerializedName;
 
 public class AddReportReq {
 
-
     @SerializedName("name")
     private String name;
 
