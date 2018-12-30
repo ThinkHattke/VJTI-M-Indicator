@@ -56,6 +56,13 @@
                 android:gravity="center"
                 android:layout_height="match_parent" />
 
+            <ImageView
+                android:id="@+id/done"
+                android:layout_width="55dp"
+                android:layout_height="55dp"
+                android:padding="18dp"
+                android:layout_alignParentEnd="true"
+                android:src="@drawable/icon_correct_check"/>
 
         </RelativeLayout>
 
@@ -69,7 +76,7 @@
 
 
         <LinearLayout
-            android:layout_marginBottom="40dp"
+            android:layout_marginBottom="60dp"
             android:orientation="vertical"
             android:layout_width="match_parent"
             android:layout_height="match_parent">
@@ -101,7 +108,7 @@
                 android:layout_marginTop="15dp"
                 android:layout_marginBottom="15dp"
                 android:layout_width="match_parent"
-                android:layout_height="100dp">
+                android:layout_height="140dp">
 
 
                 <ImageView
@@ -112,6 +119,206 @@
 
 
             </android.support.v7.widget.CardView>
+
+
+            <RelativeLayout
+                android:layout_width="match_parent"
+                android:layout_height="50dp">
+
+
+                <TextView
+                    android:layout_marginStart="50dp"
+                    android:layout_alignParentStart="true"
+                    android:textColor="@color/black"
+                    android:gravity="center"
+                    android:textStyle="bold"
+                    android:textSize="17sp"
+                    android:layout_width="100dp"
+                    android:layout_height="match_parent"
+                    android:text="Start date"/>
+
+
+                <TextView
+                    android:textSize="17sp"
+                    android:textStyle="bold"
+                    android:layout_marginEnd="50dp"
+                    android:layout_alignParentEnd="true"
+                    android:textColor="@color/black"
+                    android:gravity="center"
+                    android:layout_width="100dp"
+                    android:layout_height="match_parent"
+                    android:text="End date"/>
+
+
+            </RelativeLayout>
+
+
+            <RelativeLayout
+                android:layout_width="match_parent"
+                android:layout_height="40dp">
+
+
+                <TextView
+                    android:id="@+id/startDate"
+                    android:background="@color/colorPrimary"
+                    android:layout_marginStart="50dp"
+                    android:layout_alignParentStart="true"
+                    android:textColor="@color/white"
+                    android:gravity="center"
+                    android:textStyle="bold"
+                    android:layout_width="100dp"
+                    android:layout_height="match_parent"
+                    android:text="Click Here"/>
+
+
+                <TextView
+                    android:layout_centerInParent="true"
+                    android:layout_marginStart="50dp"
+                    android:textColor="@color/colorPrimaryDark"
+                    android:gravity="center"
+                    android:textStyle="bold"
+                    android:layout_width="100dp"
+                    android:layout_height="match_parent"
+                    android:text="TO"/>
+
+
+                <TextView
+                    android:id="@+id/endDate"
+                    android:background="@color/colorPrimary"
+                    android:textStyle="bold"
+                    android:layout_marginEnd="50dp"
+                    android:layout_alignParentEnd="true"
+                    android:textColor="@color/white"
+                    android:gravity="center"
+                    android:layout_width="100dp"
+                    android:layout_height="match_parent"
+                    android:text="Click Here"/>
+
+
+            </RelativeLayout>
+
+
+            <TextView
+                android:layout_marginTop="25dp"
+                android:layout_marginStart="25dp"
+                android:textSize="20sp"
+                android:textColor="@android:color/black"
+                android:text="Start Location:"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content" />
+
+
+            <Spinner
+                android:id="@+id/start"
+                android:background="@drawable/button_round_red"
+                android:layout_marginEnd="25dp"
+                android:maxLines="1"
+                android:maxLength="50"
+                android:layout_marginTop="15dp"
+                android:layout_marginStart="25dp"
+                android:textSize="20sp"
+                android:layout_width="match_parent"
+                android:layout_height="40dp" />
+
+            <TextView
+                android:layout_marginTop="25dp"
+                android:layout_marginStart="25dp"
+                android:textSize="20sp"
+                android:textColor="@android:color/black"
+                android:text="Destination Location:"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content" />
+
+
+            <Spinner
+                android:id="@+id/end"
+                android:background="@drawable/button_round_red"
+                android:layout_marginEnd="25dp"
+                android:maxLines="1"
+                android:maxLength="50"
+                android:layout_marginTop="15dp"
+                android:layout_marginStart="25dp"
+                android:textSize="20sp"
+                android:layout_width="match_parent"
+                android:layout_height="40dp" />
+
+
+            <TextView
+                android:layout_marginTop="25dp"
+                android:layout_marginStart="25dp"
+                android:textSize="20sp"
+                android:textColor="@android:color/black"
+                android:text="Preffered Train Timings:"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content" />
+
+
+            <RelativeLayout
+                android:layout_marginBottom="10dp"
+                android:layout_marginTop="20dp"
+                android:layout_width="match_parent"
+                android:layout_height="40dp">
+
+
+                <TextView
+                    android:id="@+id/startTrain"
+                    android:background="@color/colorPrimary"
+                    android:layout_marginStart="50dp"
+                    android:layout_alignParentStart="true"
+                    android:textColor="@color/white"
+                    android:gravity="center"
+                    android:textStyle="bold"
+                    android:layout_width="100dp"
+                    android:layout_height="match_parent"
+                    android:text="Start Train"/>
+
+
+                <TextView
+                    android:layout_centerInParent="true"
+                    android:layout_marginStart="50dp"
+                    android:textColor="@color/colorPrimaryDark"
+                    android:gravity="center"
+                    android:textStyle="bold"
+                    android:textSize="25sp"
+                    android:layout_width="100dp"
+                    android:layout_height="match_parent"
+                    android:text="-"/>
+
+
+                <TextView
+                    android:id="@+id/endTrain"
+                    android:background="@color/colorPrimary"
+                    android:textStyle="bold"
+                    android:layout_marginEnd="50dp"
+                    android:layout_alignParentEnd="true"
+                    android:textColor="@color/white"
+                    android:gravity="center"
+                    android:layout_width="100dp"
+                    android:layout_height="match_parent"
+                    android:text="Return Train"/>
+
+
+            </RelativeLayout>
+
+
+            <br.com.simplepass.loading_button_lib.customViews.CircularProgressButton
+                android:id="@+id/submit"
+                android:elevation="10dp"
+                android:text="Submit"
+                android:layout_gravity="center"
+                android:gravity="center"
+                android:textSize="16sp"
+                android:textStyle="bold"
+                android:layout_marginBottom="20dp"
+                android:textColor="@color/white"
+                android:foreground="?android:attr/selectableItemBackgroundBorderless"
+                android:layout_marginTop="20dp"
+                android:layout_width="match_parent"
+                android:layout_height="50dp"
+                android:background="@color/colorPrimaryDark"
+                app:spinning_bar_width="4dp"
+                app:spinning_bar_color="#FFF"
+                app:spinning_bar_padding="6dp" />
 
 
         </LinearLayout>
