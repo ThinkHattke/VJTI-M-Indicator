@@ -26,8 +26,10 @@ public class AddReportReq {
     @SerializedName("lon")
     private String lon;
 
+    @SerializedName("token")
+    private String token;
 
-    public AddReportReq(String name, String phoneNo, String query, String imageUrl, String placeName, String lat, String lon) {
+    public AddReportReq(String name, String phoneNo, String query, String imageUrl, String placeName, String lat, String lon, String token) {
         this.name = name;
         this.phoneNo = phoneNo;
         this.query = query;
@@ -35,6 +37,8 @@ public class AddReportReq {
         this.placeName = placeName;
         this.lat = lat;
         this.lon = lon;
+        this.token = token;
     }
+
 }
 

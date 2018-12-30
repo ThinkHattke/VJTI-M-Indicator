@@ -5,6 +5,8 @@ import android.app.Dialog;
 import android.content.DialogInterface;
 import android.content.Intent;
 import android.database.Cursor;
+import android.graphics.Bitmap;
+import android.graphics.drawable.BitmapDrawable;
 import android.net.Uri;
 import android.provider.MediaStore;
 import android.support.v7.app.AppCompatActivity;
@@ -15,23 +17,29 @@ import android.view.Window;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.AutoCompleteTextView;
+import android.widget.Button;
+import android.widget.CheckBox;
+import android.widget.CompoundButton;
 import android.widget.DatePicker;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.Spinner;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import java.util.Objects;
 
+import br.com.simplepass.loading_button_lib.customViews.CircularProgressButton;
 import thinkhattke.gaurav.vjti.Util.TinyDB;
 
 public class Remainder extends AppCompatActivity {
 
 
     //UI Components
-    private TextView startDate, endDate, startTrain, endTrain;
+    private TextView startDate, endDate, startTrain, endTrain, edit;
     private Spinner start, end;
-    private ImageView image;
+    private ImageView image, back, done;
+    private CircularProgressButton submit;
 
 
     //Global Data
@@ -40,8 +48,9 @@ public class Remainder extends AppCompatActivity {
 
     //Local Data
     String places[] = {"[Select Station]","Nallasopara", "Virar", "Vasai", "Bhayandar", "Dahisar", "Borivali", "Kandivali", "Dadar", "Bandra"};
-    String Start, End, StartTrain, EndTrain;
+    String Start, End, StartTrain="", EndTrain="", StartDate, EndDate, ImagePath;
     private static final int SELECT_PHOTO = 1;
+    boolean imaged = false;
 
 
     @Override
@@ -60,9 +69,13 @@ public class Remainder extends AppCompatActivity {
         image = findViewById(R.id.image);
         startTrain = findViewById(R.id.startTrain);
         endTrain = findViewById(R.id.endTrain);
+        back = findViewById(R.id.back);
+        done = findViewById(R.id.done);
+        submit = findViewById(R.id.submit);
+        edit = findViewById(R.id.edit);
 
 
-        //Intialising TinyDB
+        //Initialising TinyDB
         db = new TinyDB(Remainder.this);
 
 
@@ -70,7 +83,34 @@ public class Remainder extends AppCompatActivity {
         if (db.getString("pass").equals("yes")) {
 
 
+            done.setVisibility(View.GONE);
+            edit.setVisibility(View.VISIBLE);
+            submit.setVisibility(View.GONE);
+            startDate.setText(db.getString("passStartDate"));
+            endDate.setText(db.getString("passEndDate"));
+            startTrain.setText(db.getString("passStartTrain"));
+            endTrain.setText(db.getString("passEndTrain"));
 
+            setValue(db.getString("passStart"),start);
+            setValue(db.getString("passEnd"),end);
+
+            StartTrain = startTrain.getText().toString().trim();
+            EndTrain = endTrain.getText().toString().trim();
+
+
+            if (!db.getString("passImage").equals("no")) {
+
+                image.setImageBitmap(db.getImage(db.getString("passImage")));
+
+            }
+
+            image.setEnabled(false);
+            startDate.setEnabled(false);
+            endDate.setEnabled(false);
+            start.setEnabled(false);
+            end.setEnabled(false);
+            startTrain.setEnabled(false);
+            endTrain.setEnabled(false);
 
 
         }
@@ -114,8 +154,98 @@ public class Remainder extends AppCompatActivity {
     }
 
 
+    //Function to show T&C Dialog
+    private void showDialog() {
+
+        final Dialog dialog;
+        dialog = new Dialog(Remainder.this);
+        dialog.getWindow().setBackgroundDrawableResource(android.R.color.transparent);
+        dialog.requestWindowFeature(Window.FEATURE_NO_TITLE);
+        dialog.setContentView(R.layout.dialog_terms_and_condition);
+        ImageView dismiss = dialog.findViewById(R.id.dismiss);
+        final CheckBox agree = dialog.findViewById(R.id.agree);
+        TextView go = dialog.findViewById(R.id.go);
+        go.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+
+                if (agree.isChecked()) {
+
+                    db.putString("passStartDate", StartDate);
+                    db.putString("passEndDate", EndDate);
+                    db.putString("passStart", Start);
+                    db.putString("passEnd", End);
+                    db.putString("passStartTrain", StartTrain);
+                    db.putString("passEndTrain", EndTrain);
+                    db.putString("pass","yes");
+
+                    if (imaged) {
+
+                        Bitmap bitmap = ((BitmapDrawable)image.getDrawable()).getBitmap();
+                        db.putImageWithFullPath(ImagePath, bitmap);
+                        db.putString("passImage",ImagePath);
+
+                    } else {
+
+                        db.putString("passImage","no");
+
+                    }
+
+                    image.setEnabled(false);
+                    startDate.setEnabled(false);
+                    endDate.setEnabled(false);
+                    start.setEnabled(false);
+                    end.setEnabled(false);
+                    startTrain.setEnabled(false);
+                    endTrain.setEnabled(false);
+
+                    done.setVisibility(View.GONE);
+                    edit.setVisibility(View.VISIBLE);
+                    submit.setVisibility(View.GONE);
+
+                    dialog.dismiss();
+
+                }
+
+            }
+        });
+
+        dismiss.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                dialog.dismiss();
+            }
+        });
+
+        dialog.show();
+
+    }
+
+
     //Function to handle OnClicks
     private void OnClicks() {
+
+        edit.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+
+
+                edit.setVisibility(View.GONE);
+                done.setVisibility(View.VISIBLE);
+                submit.setVisibility(View.VISIBLE);
+                submit.setText("Edit");
+                image.setEnabled(true);
+                startDate.setEnabled(true);
+                endDate.setEnabled(true);
+                start.setEnabled(true);
+                end.setEnabled(true);
+                startTrain.setEnabled(true);
+                endTrain.setEnabled(true);
+
+
+            }
+        });
+
 
 
         startDate.setOnClickListener(new View.OnClickListener() {
@@ -468,6 +598,38 @@ public class Remainder extends AppCompatActivity {
         });
 
 
+        back.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                finish();
+            }
+        });
+
+
+        done.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                submit.performClick();
+            }
+        });
+
+
+        submit.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+
+
+                if (checkFields()) {
+
+                    showDialog();
+
+                }
+
+
+            }
+        });
+
+
     }
 
 
@@ -506,7 +668,7 @@ public class Remainder extends AppCompatActivity {
     @Override
     protected void onActivityResult(int requestCode, int resultCode, Intent data) {
         super.onActivityResult(requestCode, resultCode, data);
-        String imagePath = "";
+        ImagePath = "";
         if (requestCode == SELECT_PHOTO && resultCode == RESULT_OK) {
             Uri selectedImage = data.getData();
             String[] filePathColumn = {MediaStore.Images.Media.DATA};
@@ -517,7 +679,7 @@ public class Remainder extends AppCompatActivity {
             if (cursor != null) {
                 cursor.moveToFirst();
                 int columnIndex = cursor.getColumnIndex(filePathColumn[0]);
-                imagePath = cursor.getString(columnIndex);
+                ImagePath = cursor.getString(columnIndex);
                 cursor.close();
                 image.setImageURI(selectedImage);
                 image.setTag("yes");
@@ -547,7 +709,74 @@ public class Remainder extends AppCompatActivity {
     }
 
 
-    //
+    //Function to check Valid fields
+    private boolean checkFields() {
+
+
+        StartDate = startDate.getText().toString();
+        EndDate = endDate.getText().toString();
+
+
+        if (StartDate.equals("Click Here")) {
+
+            print("Provide Start date to contiue");
+            return false;
+
+        } else if (EndDate.equals("Click Here")) {
+
+            print("Provide End date to contiue");
+            return false;
+
+        } else if (Start.equals("[Select Station]")) {
+
+            print("Provide Start Station to continue");
+            return false;
+
+        } else if (End.equals("[Select Station]")) {
+
+            print("Provide Destination Station to continue");
+            return false;
+
+        } else if (StartTrain.isEmpty()) {
+
+            print("Provide Start Train to continue");
+            return false;
+
+        } else if (EndTrain.isEmpty()) {
+
+            print("Provide Return Train to continue");
+            return false;
+
+        } else {
+
+            return true;
+
+        }
+
+
+    }
+
+
+    //Print function which prints a toast for Debugging purpose
+    public void print(String s) {
+        Toast toast = Toast.makeText(getApplicationContext(), s, Toast.LENGTH_LONG);
+        toast.show();
+    }
+
+
+    private void setValue(String s, Spinner spinner) {
+
+        for(int i=0; i<places.length; i++) {
+
+            if (s.equals(places[i].trim())) {
+
+                spinner.setSelection(i);
+
+            }
+
+        }
+
+    }
 
 
 }

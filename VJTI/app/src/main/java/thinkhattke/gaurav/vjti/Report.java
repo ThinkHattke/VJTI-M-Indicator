@@ -22,6 +22,8 @@ import android.widget.Toast;
 
 import com.google.android.gms.tasks.OnFailureListener;
 import com.google.android.gms.tasks.OnSuccessListener;
+import com.google.firebase.iid.FirebaseInstanceId;
+import com.google.firebase.iid.InstanceIdResult;
 import com.google.firebase.storage.FirebaseStorage;
 import com.google.firebase.storage.StorageReference;
 import com.google.firebase.storage.UploadTask;
@@ -37,6 +39,7 @@ import thinkhattke.gaurav.vjti.API.Connection.ApiInterface;
 import thinkhattke.gaurav.vjti.API.Reponse.NewReportRes;
 import thinkhattke.gaurav.vjti.API.Request.AddReportReq;
 import thinkhattke.gaurav.vjti.Util.GPSTracker;
+import thinkhattke.gaurav.vjti.Util.TinyDB;
 
 public class Report extends AppCompatActivity {
 
@@ -51,12 +54,16 @@ public class Report extends AppCompatActivity {
 
 
     //Local Data
-    private GPSTracker gps;
-    private ApiInterface api;
     String Name, Number, Problem, Location, ImageURL, Lat, Lon;
     String problems[] = {"[Select Problem]", "Door Blocking", "Bullying", "Theft", "Voilence", "Others"};
     String places[] = {"Nallasopara", "Virar", "Vasai", "Bhayandar", "Dahisar", "Borivali", "Kandivali", "Dadar", "Bandra"};
     private static final int SELECT_PHOTO = 1;
+
+
+    //Global data
+    TinyDB db;
+    private GPSTracker gps;
+    private ApiInterface api;
 
 
     @Override
@@ -114,6 +121,23 @@ public class Report extends AppCompatActivity {
         api = APIClient.getClient().create(ApiInterface.class);
 
 
+        //Setting up TinyDB
+        db = new TinyDB(Report.this);
+
+
+        //Updating the FireBase Device Token
+        FirebaseInstanceId.getInstance().getInstanceId().addOnSuccessListener(new OnSuccessListener<InstanceIdResult>() {
+            @Override
+            public void onSuccess(InstanceIdResult instanceIdResult) {
+
+                String newToken = instanceIdResult.getToken();
+                db = new TinyDB(Report.this);
+                db.putString("token",newToken);
+
+
+            }
+        });
+
     }
 
 
@@ -167,7 +191,7 @@ public class Report extends AppCompatActivity {
 
                     if (image.getTag().equals("no")) {
 
-                        AddReportReq addReportReq = new AddReportReq(Name, Number, Problem,"", Location, Lat, Lon);
+                        AddReportReq addReportReq = new AddReportReq(Name, Number, Problem,"", Location, Lat, Lon, db.getString("token") );
                         submit(addReportReq);
 
                     } else {
@@ -196,7 +220,7 @@ public class Report extends AppCompatActivity {
 
                                 ImageURL = taskSnapshot.getStorage().getDownloadUrl().toString();
 
-                                AddReportReq addReportReq = new AddReportReq(Name, Number, Problem,"", Location, Lat, Lon);
+                                AddReportReq addReportReq = new AddReportReq(Name, Number, Problem,"", Location, Lat, Lon, db.getString("token"));
 
                                 submit(addReportReq);
 
