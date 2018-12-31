@@ -52,23 +52,27 @@
                 android:layout_width="wrap_content"
                 android:maxWidth="300dp"
                 android:layout_height="match_parent"
-                android:text="          Using Reporting System, you can report can Criminal activity as well as wrong doing or working in railway system. \n\n     This Information will be either validated if need or directly sent to required authorirty.\n \n     To report just fill that basic form and add Image of the incident if possible and press the submit button, once submitted give us some time to validate if necessary and action will be taken ASAP if information provided is stands true. Abusing this system may have legal consequences by Railway."/>
+                android:text="This service might use live location, which mean this app will have access to your location and track you to serve you better and help the RAILWAY COMMUNITY. \n      Storing your Pass in digital format is just used for management purposes, don't use it for presentation purposes since it won't valid as a digital copy.\n  Location and related tracked in the app is completely anonymously saved and used and end result is just the indication of Railway system. Terms and Condition Apply"/>
 
 
         </ScrollView>
         
         <RelativeLayout
+            android:layout_marginTop="5dp"
+            android:layout_marginBottom="10dp"
             android:layout_width="match_parent"
             android:layout_height="30dp">
 
             <CheckBox
+                android:buttonTint="@color/colorPrimary"
                 android:id="@+id/agree"
                 android:layout_alignParentStart="true"
                 android:layout_marginStart="15dp"
-                android:layout_width="30dp"
-                android:layout_height="30dp" />
+                android:layout_width="25dp"
+                android:layout_height="25dp" />
 
             <TextView
+                android:paddingTop="4dp"
                 android:textStyle="bold"
                 android:textColor="@color/black"
                 android:layout_alignParentStart="true"
